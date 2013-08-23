@@ -37,7 +37,7 @@ import (
 
 // Globals (const arrays that will be initialized inside init())
 var (
-	countryCode = []string{
+	CountryCode = []string{
 		"--", "AP", "EU", "AD", "AE", "AF", "AG", "AI", "AL", "AM", "AN", "AO", "AQ", "AR",
 		"AS", "AT", "AU", "AW", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ",
 		"BM", "BN", "BO", "BR", "BS", "BT", "BV", "BW", "BY", "BZ", "CA", "CC", "CD", "CF",
@@ -220,7 +220,7 @@ func (gi *GeoIP) GetLocationByIPNum(ipNum uint32) *Location {
 
 	// If the database is country
 	if gi.dbType == dbCountryEdition {
-		location.CountryCode = countryCode[offset-countryBegin]
+		location.CountryCode = CountryCode[offset-countryBegin]
 		location.CountryName = countryName[offset-countryBegin]
 
 		return location
@@ -234,7 +234,7 @@ func (gi *GeoIP) GetLocationByIPNum(ipNum uint32) *Location {
 	}
 
 	// Read the country code/name first
-	location.CountryCode = countryCode[gi.data[recPointer]]
+	location.CountryCode = CountryCode[gi.data[recPointer]]
 	location.CountryName = countryName[gi.data[recPointer]]
 	readLen := 1
 	recPointer += 1
